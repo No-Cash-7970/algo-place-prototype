@@ -180,18 +180,18 @@ async function main() {
       console.group('Joining game...');
       console.log('Timestamp:', stdlib.bigNumberToNumber(await ctcPlayer2.apis.Player.joinGame()));
       console.info('SUCCESS (Good)');
-      console.groupEnd();
     } catch (error) {
       console.error('FAIL (Not supposed to happen):', error.message);
     }
+    console.groupEnd();
     try {
       console.group("Trying to Overwrite Player 1's tile...");
       console.log('New timestamp:', stdlib.bigNumberToNumber(await ctcPlayer2.apis.Player.setTile(2, 1))); // Set middle tile to black
-      console.groupEnd();
       console.error('SUCCESS (Not supposed to happen)');
     } catch (error) {
       console.info('FAIL (Good)');
     }
+    console.groupEnd();
     console.groupEnd();
 
     await printGameState(ctcPlayer2.views);
@@ -250,26 +250,26 @@ async function main() {
       console.group('Exiting game...');
       await ctcPlayer2.apis.Player.exitGame();
       console.info('SUCCESS (Good)');
-      console.groupEnd();
     } catch (error) {
       console.error('FAIL (Not supposed to happen):', error.message);
     }
+    console.groupEnd();
     try {
       console.group('Rejoining game...');
       console.log('Timestamp:', stdlib.bigNumberToNumber(await ctcPlayer2.apis.Player.joinGame()));
       console.info('SUCCESS (Good)');
-      console.groupEnd();
     } catch (error) {
       console.error('FAIL (Not supposed to happen):', error.message);
     }
+    console.groupEnd();
     try {
       console.group('Trying to set a tile before new cool-down time...');
       console.log('New timestamp:', stdlib.bigNumberToNumber(await ctcPlayer2.apis.Player.setTile(0, 1))); // Set middle tile to red
-      console.groupEnd();
       console.error('SUCCESS (Not supposed to happen)');
     } catch (error) {
       console.info('FAIL (Good)');
     }
+    console.groupEnd();
     console.groupEnd();
 
     await printGameState(ctcPlayer2.views);
@@ -301,7 +301,6 @@ async function main() {
 
     // Player 1 tries to set tile before new start round
     console.group('Player 1 is trying to set a tile before the new start round...');
-
     try {
       console.log('New timestamp:', stdlib.bigNumberToNumber(await ctcPlayer1.apis.Player.setTile(5, 2)));
       console.error('SUCCESS (Not supposed to happen)');
@@ -342,7 +341,6 @@ async function main() {
 
     // Player 1 tries to set tile after new end round
     console.group('Player 1 is trying to set a tile after the new end round...');
-
     try {
       console.log('New timestamp:', stdlib.bigNumberToNumber(await ctcPlayer1.apis.Player.setTile(5, 2)));
       console.error('SUCCESS (Not supposed to happen)');
@@ -380,6 +378,10 @@ async function getBalance(acct) {
   return stdlib.formatCurrency(await stdlib.balanceOf(acct), 4);
 }
 
+function trimNull(string) {
+  return string.replace(/\0/g, '');
+}
+
 function parseBoard(viewsBoard) {
   return viewsBoard.map(tile => {
     const parsedTile = [];
@@ -392,7 +394,7 @@ function parseBoard(viewsBoard) {
 async function printGameState(view) {
   let gameName = (await view.gameName())[1];
 
-  console.group(`Game State of "${gameName}"`);
+  console.group(`Game State of "${trimNull(gameName).trim()}"`);
   console.info('Board:', parseBoard((await view.board())[1]));
   console.info('Number of Players:', stdlib.bigNumberToNumber((await view.numPlayers())[1]));
   console.info('Max Players:', stdlib.bigNumberToNumber((await view.maxPlayers())[1]));
