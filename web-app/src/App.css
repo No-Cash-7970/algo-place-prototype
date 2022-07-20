@@ -1,0 +1,3 @@
+.pera-wallet-connect-modal {
+    z-index: var(--chakra-zIndices-modal) !important;
+}
