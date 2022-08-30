@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.ce3c1e42.css","mappings":"AAAA,2BACI,oCACJ","sources":["App.css"],"sourcesContent":[".pera-wallet-connect-modal {\n    z-index: var(--chakra-zIndices-modal);\n}"],"names":[],"sourceRoot":""}

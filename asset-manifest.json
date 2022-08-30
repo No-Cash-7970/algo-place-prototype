@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/algo-place/static/css/main.ce3c1e42.css",
+    "main.js": "/algo-place/static/js/main.d704e5f5.js",
+    "static/js/377.ddff58f7.chunk.js": "/algo-place/static/js/377.ddff58f7.chunk.js",
+    "static/media/long_powered_by_algo_all_green.svg": "/algo-place/static/media/long_powered_by_algo_all_green.3ddd5db77472ed2f6045230dbecbc096.svg",
+    "index.html": "/algo-place/index.html",
+    "main.ce3c1e42.css.map": "/algo-place/static/css/main.ce3c1e42.css.map",
+    "main.d704e5f5.js.map": "/algo-place/static/js/main.d704e5f5.js.map",
+    "377.ddff58f7.chunk.js.map": "/algo-place/static/js/377.ddff58f7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce3c1e42.css",
+    "static/js/main.d704e5f5.js"
+  ]
+}
